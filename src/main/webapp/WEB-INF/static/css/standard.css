@@ -1,0 +1,226 @@
+
+
+.fu0 {
+	height: 39px
+}
+
+.cr1 {
+	padding: 2px 4px 4px
+}
+
+.fu0 .dG0 .nui-ipt {
+	padding: 15px 0 0
+}
+
+.ua-ie6 .fu0 .dG0 .nui-ipt {
+	padding-top: 10px
+}
+
+.ua-ie7 .fu0 .dG0 .nui-ipt {
+	padding-top: 10px
+}
+
+.fu0 .nui-ipt-input {
+	font-size: 14px;
+	font-weight: 700
+}
+
+.fF0 {
+	color: #989898;
+	line-height: 22px;
+	padding-top: 5px
+}
+
+.fv0 {
+	height: 30px;
+	white-space: nowrap;
+	position: relative
+}
+
+.dq0 {
+	float: right
+}
+
+.cb0 {
+	margin: 0 3px 0 -4px;
+	float: left;
+	display: block;
+	padding: 0 4px;
+	height: 22px;
+	line-height: 22px
+}
+
+.fv0 .nui-txt-link:hover .nui-txt-impt,.fv0 .nui-txt-link-focus .nui-txt-impt,.fv0 .nui-txt-link:hover .nui-txt-impt
+	{
+	color: #fff !important
+}
+
+.cb0 {
+	position: relative;
+	padding-left: 15px
+}
+
+/* 添加附件begin */
+.iA0 .nui-ico-cmpAttach {
+	background: url(../images/cmps.png) no-repeat 0 0;
+	width: 7px;
+	height: 12px;
+	overflow: hidden;
+	position: absolute;
+	left: 10px;
+	top: 8px
+}
+
+.attachmentDownload{
+	float: left;
+	margin:5px 0 0 5px;
+}
+
+.nui-txt-imptLink, .nui-txt-impt {
+color: #c00!important;
+}
+
+.nui-txt-tips {
+	color: #999 !important;
+	float: left;
+	margin-top: 5px;
+	margin-right: 4px;
+}
+
+#uploadify{
+	color:#1e5494;
+	margin-left: 10px;
+}
+
+/* 添加附件end */
+
+/* 明细*/
+#attachDiv .iA0 .nui-ico-cmpAttach {
+	background: url(../images/cmps.png) no-repeat 0 0;
+	width: 7px;
+	height: 12px;
+	overflow: hidden;
+	position: absolute;
+	left: 5px;
+	top: 5px
+}
+.cs0 {
+	color: #B1B1B1;
+	float: left;
+	margin: 5px 3px 0
+}
+
+.ca0 {
+	display: block;
+	width: 21px;
+	height: 22px;
+	padding: 0;
+	float: left;
+	position: relative;
+	margin-top: 10px
+}
+
+.ca0 .nui-ico {
+	position: absolute;
+	left: 7px;
+	top: 9px
+}
+
+.cH0 {
+	float: left;
+	color: #999;
+	margin: 11px 3px 0
+}
+
+.cu2 {
+	color: #999;
+	margin: 0 3px
+}
+
+.dm1 {
+	float: left;
+	padding-top: 12px
+}
+
+.by0 {
+	width: 66px;
+	height: 31px;
+	overflow: hidden;
+	position: absolute;
+	cursor: pointer;
+	left: -4px;
+	top: 4px;
+	filter: alpha(opacity = 0);
+	opacity: 0
+}
+
+.O0 {
+	cursor: pointer;
+	font-size: 30px;
+	position: absolute;
+	filter: alpha(opacity = 0);
+	opacity: 0
+}
+
+.R0 {
+	opacity: .8;
+	font-weight: 700;
+	text-align: center;
+	color: #000;
+	font-size: 14px;
+	position: absolute;
+	left: -1px;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	padding: 0;
+	line-height: 200px;
+	border: #e7e7cd 1px solid;
+	background-color: #FFFFE1
+}
+
+.R0 .nui-ico-x {
+	position: absolute;
+	right: 5px;
+	top: 5px
+}
+
+.bs0 {
+	width: 100%;
+	height: auto;
+	overflow: visible
+}
+
+.D0 {
+	margin-right: -10px;
+	padding-bottom: 4px;
+	font-size: 0
+}
+
+.G0 {
+	width: 320px;
+	height: 44px;
+	float: left;
+	position: relative;
+	margin: 0 8px 8px 0;
+	border-radius: 3px;
+	overflow: visible;
+	font-size: 12px
+}
+
+.G0 .nui-ico-file32 {
+	margin: 7px 0 0 4px
+}
+
+.o0 {
+	width: 200px;
+	height: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #666;
+	position: absolute;
+	left: 41px;
+	top: 4px
+}
+

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:context="http://www.springframework.org/schema/context" 
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+				http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+				http://www.springframework.org/schema/context 
+				http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+				http://www.springframework.org/schema/mvc 
+				http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	
+	<!-- 注册4个BeanPostProcessor,为了系统能识别相应的注解 (是一种简化配置)-->
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="stringHttpMessageConverter" />
+                <!-- <ref bean="jsonHttpMessageConverter" /> -->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name ="supportedMediaTypes">   
+              <list>   
+                  <value>text/html;charset=UTF-8</value>   
+              </list>   
+        </property> 
+    </bean>
+
+    <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> 
+        <property name="supportedMediaTypes"> 
+            <list> 
+                <value>application/json</value> 
+            </list> 
+        </property> 
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:defaultEncoding="utf-8">
+	<property name="maxUploadSize">
+		<value>104857600</value>
+	</property>
+	<property name="maxInMemorySize">
+		<value>10240000</value>
+	</property>
+	</bean>
+	
+	<mvc:annotation-driven/>
+    <mvc:resources mapping="/images/**"  location="/WEB-INF/static/images/"/>
+    <mvc:resources mapping="/images_common/**"  location="/WEB-INF/static/images_common/"/>
+    <mvc:resources mapping="/images_line/**"  location="/WEB-INF/static/images_line/"/>
+    <mvc:resources mapping="/images_qiDa/**"  location="/WEB-INF/static/images_qiDa/"/>
+    <mvc:resources mapping="/css/**"  location="/WEB-INF/static/css/"/>
+    <mvc:resources mapping="/css_qiDa/**"  location="/WEB-INF/static/css_qiDa/"/>
+    <mvc:resources mapping="/css_enroll/**"  location="/WEB-INF/static/css_enroll/"/>
+    <mvc:resources mapping="/js/**"  location="/WEB-INF/static/js/"/>
+    <mvc:resources mapping="/js_qiDa/**"  location="/WEB-INF/static/js_qiDa/"/>
+    <mvc:resources mapping="/js_enroll/**"  location="/WEB-INF/static/js_enroll/"/>
+	 
+	 
+	<!-- 使spring支持自动检测组件，如注解的Controller 使用后就可以将context:annotation-config移除-->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />  
+	    <property name="ignoreResourceNotFound" value="true" />  
+	    <property name="locations">  
+	    <list>  
+	          <!-- <value>classpath*:config.properties</value> -->
+	    </list>  
+	     </property>  
+	</bean>
+
+	<!-- <context:component-scan base-package="com.xiaohe.qd"/> -->
+	<context:component-scan base-package="com.xiaohe.qd" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	 <mvc:interceptors>
+	 	<mvc:interceptor>
+  			<mvc:mapping path="/ai/**" /> 
+ 				<bean class="com.xiaohe.qd.interceptor.LoginInterceptor">
+ 				<property name="excludeUrls">
+ 				<list>
+ 					<value>/web/ai/qdIndex</value>
+ 					<value>/web/ai/ajaxQdArea</value>
+ 					<value>/web/ai/ajaxQdConcept</value>
+  					<value>/web/ai/qdKline</value>
+  					<value>/web/ai/saveStockBullish</value>
+  				</list>
+  				</property>
+  				</bean>
+  		</mvc:interceptor>
+  		
+ 		<mvc:interceptor>
+  			<mvc:mapping path="/admin/**" /> 
+ 				<bean class="com.xiaohe.qd.interceptor.SessionInterceptor">
+ 				<property name="excludeUrls">
+ 				<list>
+  					<value>/web/admin/index</value> 
+					<value>/web/admin/login</value>
+					<value>/web/admin/loginAjax</value>
+					<value>/web/admin/logout</value> 
+  				</list>
+  				</property>
+  				</bean>
+  		</mvc:interceptor>
+  		
+  		<mvc:interceptor>
+  			<mvc:mapping path="/stock/**" /> 
+ 				<bean class="com.xiaohe.qd.interceptor.WeiXinInterceptor">
+ 				<property name="excludeUrls">
+ 				<list>
+ 					<value>/web/stock/wxLogin</value> 
+  					<value>/web/stock/addPhone</value> 
+  					<value>/web/stock/sendCode</value> 
+  					<value>/web/stock/bindPhone</value> 
+  					<value>/web/stock/stockIndex</value> 
+  					<value>/web/stock/kLine</value>
+  					<value>/web/stock/getJuheStockInfo</value>
+  					<value>/web/stock/getPriceAndRange</value>
+  					<value>/web/stock/moreStockCommentList</value>
+  					<value>/web/stock/saveStockCommentApproval</value>
+  					<value>/web/stock/saveCreateStockComment</value>
+  				</list>
+  				</property>
+  				</bean>
+  		</mvc:interceptor>
+  	</mvc:interceptors> 
+	
+	<!-- 完成请求和注解POJO的映射 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	
+	
+	<!-- 配置freeMarker视图解析器 -->
+	<bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+		<property name="contentType" value="text/html; charset=utf-8" />
+		<property name="suffix" value=".ftl" />
+		<property name="order" value="0" />
+	</bean>
+	
+	<!-- 对模型视图名称的解析，在WEB-INF/jsp目录下找对应的jsp文件 -->    
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/" />  
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="1" />
+    </bean>  
+</beans>

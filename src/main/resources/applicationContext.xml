@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+				http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+				http://www.springframework.org/schema/aop 
+				http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+				http://www.springframework.org/schema/tx 
+				http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+				http://www.springframework.org/schema/context 
+				http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+				
+	<!-- Import basic SpringMVC Resteasy integration -->
+    <import resource="classpath:springmvc-resteasy.xml" />
+
+	<context:property-placeholder location="classpath:application.properties" />
+	
+	
+	<!-- 自动扫描dao和service包(自动注入) -->
+	<context:component-scan base-package="com.xiaohe.qd.dao,com.xiaohe.qd.service" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	
+	<!-- jboss数据源配置 -->
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName">
+        	<value>java:jboss/datasources/MySqlDS</value>
+        </property>
+    </bean> -->
+    
+    <bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="mysql" />
+		<property name="driver" value="${dataSource.driverClass}" />
+		<property name="driverUrl" value="${dataSource.url}" />
+		<property name="user" value="${dataSource.user}" />
+		<property name="password" value="${dataSource.password}" />
+		<property name="minimumConnectionCount" value="${dataSource.minPoolSize}" />
+		<property name="maximumConnectionCount" value="${dataSource.maxPoolSize}" />
+		<property name="statistics" value="1m,15m,1d" />
+		<property name="maximumActiveTime" value="3000000"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+			    <prop key="hibernate.dialect">com.xiaohe.qd.model.DialectForInkfish</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<!-- 批量跟新或删除时使用 -->
+				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+				<!-- hibernate事物隔离级别 -->
+				<prop key="hibernate.collection.isolation">${hibernate.collection.isolation}</prop>
+                <!--二级缓存 查询缓存-->
+				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+				<prop key="hibernate.memcached.memcacheClientFactory">${hibernate.memcached.memcacheClientFactory}</prop>
+				<prop key="hibernate.memcached.commandFactory">${hibernate.memcached.commandFactory}</prop>
+				<prop key="hiberante.memcached.sessionLocator">${hiberante.memcached.sessionLocator}</prop>
+				<prop key="hibernate.memcached.servers">${hibernate.memcached.servers}</prop>
+				<prop key="hibernate.memcached.cacheTimeSeconds">${hibernate.memcached.cacheTimeSeconds}</prop>
+				<prop key="hibernate.memcached.clearSupported">${hibernate.memcached.clearSupported}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="maximum-active-time">300</prop>
+			</props>
+		</property>
+		<!-- 自动扫描注解方式配置的hibernate类文件 -->
+		<property name="packagesToScan" value="com.xiaohe.qd.model" />
+	</bean>
+	
+	<!-- jdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    		<property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- hibernateTemplate -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory" ></property>
+    </bean> 
+    
+    <bean id="springApplicationContext" class="com.xiaohe.qd.context.SpringApplicationContext"></bean>
+    
+    <!-- 设置freeMarker的配置文件路径 -->
+	<bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:freemarker.properties" />
+	</bean>
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="freemarkerSettings" ref="freemarkerConfiguration" /> 
+		<property name="templateLoaderPath" value="/WEB-INF/template/"/>
+	</bean>
+    
+    <!-- 配置Hibernate事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+   
+   <!-- 配置事务异常封装 -->
+   <bean id="persistenceExceptionTranslationPostProcessor" 
+       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+   
+   <!--  声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+        	<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="flush*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" /> 
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+    </tx:advice>
+    
+    <aop:config expose-proxy="true">
+        <!-- 只对业务逻辑层实施事务 -->
+        <aop:pointcut id="txPointcut" expression="execution(* com.xiaohe.qd.service.*.*(..))" />
+        <!-- Advisor定义，切入点和通知分别为txPointcut、txAdvice -->
+        <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+
+</beans>

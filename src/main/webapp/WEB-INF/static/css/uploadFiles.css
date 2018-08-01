@@ -1,0 +1,101 @@
+.attach {
+	height: 20px;
+	/* border-left: solid 1px white;
+	border-right: solid 1px gray;
+	border-top: solid 1px white;
+	border-bottom: solid 1px gray;
+	background-color: #eeeef1; */
+	padding: 0px;
+}
+
+.divFileInfo {
+	padding-top: 5px;
+	/* width: 400px;
+	border: dotted 1px orange;
+	height: 150px; */
+}
+
+.spText {
+	position: relative;
+	bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.myhelp {
+	padding-left: 0px;
+}
+
+.myhelp li {
+	list-style: none;
+	line-height: 22px;
+	padding-left: 0px;
+}
+
+.divupload {
+	font-size: 12px;
+	width: 100%;
+	/*background-color: White;
+	 border: solid 1px #336699; */
+	padding: 10px;
+	margin: auto;
+}
+
+td {
+	font-family: @ Tahoma;
+}
+
+.aclose {
+	color: blue;
+}
+
+.aclose:hover {
+	color: red;
+}
+
+body {
+	margin: 0;
+	font-size: 12px;
+}
+
+HTML,BODY,FORM {
+	height: 100%;
+}
+
+.inputfile{
+	cursor: pointer !important;
+	height: 18px;
+	left: -13px;
+	filter: alpha(opacity =   0);
+	top: 1px;
+	width: 10px;
+	opacity: 0;
+}
+
+.fileparent {
+	 background-image:
+		url(../images/addimg.png);
+	 background-repeat: no-repeat;
+	display: block;
+	float: left;
+	height: 20px;
+	margin-top: -1px;
+	position: relative;
+	text-decoration: none;
+	top: 0pt;
+	width: 80px;
+}
+
+
+.cmpAttach_icon {
+background: url(../images/cmps.png) no-repeat 0 0;
+width: 7px;
+height: 12px;
+overflow: hidden;
+position: absolute;
+left: 10px;
+top: 8px;
+}
+-->
+
+

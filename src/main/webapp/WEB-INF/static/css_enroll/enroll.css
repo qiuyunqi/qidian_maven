@@ -1,0 +1,61 @@
+a,input,button{ outline:none; }
+::-moz-focus-inner{border:0px;}
+*{padding:0; margin:0;}
+li{list-style:none;}
+a{text-decoration:none;cursor: pointer;}
+a:focus,button:focus{outline:none;}
+a:hover,a:focus{text-decoration: none;}
+img{border:0; vertical-align:middle;}
+table{border-collapse:collapse;}
+.defaultCol{color:#28b2e3;}
+.smalSize{font-size:12px;}
+.container{max-width: 1200px;min-width: 1000px;margin:0 auto;padding:0;}
+.btn:focus,.btn:active:focus,.btnj.active:focus,.btn.focus,.btn.focus:active,.btn.active.focus{
+	outline:none; 
+}
+body{ font-size:12px;margin: 0;padding: 0;height: 100%;font-family: "PingHei","Microsoft YaHei","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";}
+
+/*begin*/
+.enrollBody{
+	position: absolute;
+	width:100%;
+	height:100%;
+}
+.enroll-content{
+	padding: 40px 0;
+	width:92%;
+	margin:0 auto;
+	background: #fff;
+}
+.enroll-content h4{
+	border-bottom:1px dashed #dfdfdf;
+	padding-bottom: 15px;
+	font-size: 18px;
+	font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    margin-bottom: 15px;
+}
+.enroll-info{
+	font-size:14px;
+}
+.enroll-name,.enroll-phone{
+	padding:5px 0;
+	border-bottom:1px solid #dfdfdf;
+	margin-bottom: 15px;
+}
+.busBumInpt{
+	border:0 none;
+	background: #fff;
+}
+.sveBt{
+	display: block;
+    background: #96d721;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 1px 1px #dfdfdf;
+}

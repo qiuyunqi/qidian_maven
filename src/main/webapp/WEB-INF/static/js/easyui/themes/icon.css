@@ -1,0 +1,206 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+
+.icon-file{
+	background:url('icons/file.png') no-repeat center center;
+}
+.icon-buildplan{
+	background:url('icons/buildplan.png') no-repeat center center;
+}
+.icon-polling{
+	background:url('icons/polling.png') no-repeat center center;
+}
+.icon-report{
+	background:url('icons/report.png') no-repeat center center;
+}
+.icon-project{
+	background:url('icons/project.png') no-repeat center center;
+}
+.icon-sysset{
+	background:url('icons/sysset.png') no-repeat center center;
+}
+.icon-plan1{
+	background:url('icons/plan1.png') no-repeat center center;
+}
+.icon-bsaeinfo{
+	background:url('icons/baseinfo.png') no-repeat center center;
+}
+.icon-web{
+	background:url('icons/web.png') no-repeat center center;
+}
+.icon-taskmanage{
+	background:url('icons/taskmanage.png') no-repeat center center;
+}
+.icon-sysmanage{
+    background:url('icons/wrench.png') no-repeat center center;
+}
+.icon-processcheck
+{
+     background:url('icons/arrow_down.png') no-repeat center center;
+}
+.icon-taskdivision
+{
+    background:url('icons/brick_go.png') no-repeat center center;
+}
+.icon-leavemanage
+{
+    background:url('icons/application_form.png') no-repeat center center;
+}
+.icon-moneymanage
+{
+    background:url('icons/money.png') no-repeat center center;
+}
+.icon-personmanage
+{
+     background:url('icons/user.png') no-repeat center center;
+}
+.icon-yzmanage
+{
+     background:url('icons/award_star_bronze_2.png') no-repeat center center;
+}
+.icon-paymanage
+{
+      background:url('icons/coins.png') no-repeat center center;
+}
+.icon-safemanage
+{
+    background:url('icons/vector.png') no-repeat center center;
+}
+.icon-damanage
+{
+     background:url('icons/page_word.png') no-repeat center center;
+}
+.icon-inforelease
+{
+     background:url('icons/text_columns.png') no-repeat center center;
+}
+.icons-filemanage
+{
+     background:url('icons/folder.png') no-repeat center center;
+}
+.icon-conmanage
+{
+    background:url('icons/report_word.png') no-repeat center center;
+}
+.icon-archivemanage
+{
+    background:url('icons/car.png') no-repeat center center;
+}
+.icon-supply
+{
+    background:url('icons/supply.png') no-repeat center center;
+}
+.icon-baseinfo
+{
+    background:url('icons/information.png') no-repeat center center;
+}
+.icon-web
+{
+    background:url('icons/anchor.png') no-repeat center center;
+}
+.icon-taskmanage
+{
+    background:url('icons/package_go.png') no-repeat center center;
+}
+.icon-xjmanage
+{
+     background:url('icons/arrow_inout.png') no-repeat center center;
+}
+.icon-wxmanage
+{
+    background:url('icons/lorry.png') no-repeat center center;
+}
+.icon-hycheck
+{
+    background:url('icons/flag_blue.png') no-repeat center center;
+}
+.icon-gcproject
+{
+     background:url('icons/rss.png') no-repeat center center;
+}
+.icon-bridgeevaluate
+{
+     background:url('icons/arrow_branch.png') no-repeat center center;
+}
+.icon-sysconfig
+{
+     background:url('icons/sysset.png') no-repeat center center;
+}
+.icon-totalcheck
+{
+     background:url('icons/text_strikethrough.png') no-repeat center center;
+}
+.icon-liimg
+{
+     background:url('icons/bullet_star.png') no-repeat center center;
+}
+.icon-zhsearch
+{
+     background:url('icons/search.png') no-repeat center center;
+}
+.icon-excel
+{
+     background:url('icons/excel.png') no-repeat center center;
+}
